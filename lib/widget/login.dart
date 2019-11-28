@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/page/first_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:life_media_demo/page/page_loginUser.dart';
 import 'dart:convert';
+import 'package:flutter_launch/flutter_launch.dart';
 
 import 'package:life_media_demo/page/page_select.dart';
+import 'package:life_media_demo/test.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -45,7 +47,7 @@ class _LoginState extends State<Login> {
 
   void cek() async {
     login();
-    await requestLocationPermission(context);
+    requestLocationPermission(context);
     latd = position.latitude.toString();
     longi = position.longitude.toString();
     print(latd);
@@ -57,18 +59,18 @@ class _LoginState extends State<Login> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return Dialog(
-          child: Container(
-            width: 100.0,
-            height: 100.0,
-            child: CircularProgressIndicator())
-        );
+        return ColorLoader3();
       },
     );
     new Future.delayed(new Duration(seconds: 3), () {
       Navigator.pop(context);
       cek(); //pop dialog
     });
+  }
+
+  @override
+  initState() {
+    super.initState();
   }
 
   @override
@@ -86,7 +88,10 @@ class _LoginState extends State<Login> {
                 padding: EdgeInsets.only(bottom: 50),
               ),
               InkWell(
-                  onTap: () => print("Container pressed"),
+                  onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UserLogin()),
+                      ),
                   child: roundedRectButton("Masuk", signInGradients, false)),
               InkWell(
                   onTap: () {
@@ -118,7 +123,7 @@ Widget roundedRectButton(
             width: MediaQuery.of(mContext).size.width / 1.7,
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)),
+                  borderRadius: BorderRadius.circular(15.0)),
               gradient: LinearGradient(
                   colors: gradient,
                   begin: Alignment.topLeft,
@@ -153,7 +158,7 @@ _ackAlert(BuildContext context) {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(32.0))),
+              borderRadius: BorderRadius.all(Radius.circular(15.0))),
           contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
             width: MediaQuery.of(context).size.width / 1.2,
@@ -211,11 +216,11 @@ _ackAlert2(BuildContext context) {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(32.0))),
+              borderRadius: BorderRadius.all(Radius.circular(15.0))),
           contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
             width: MediaQuery.of(context).size.width / 1.2,
-            height: MediaQuery.of(context).size.width / 3,
+            height: MediaQuery.of(context).size.width / 2.5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -234,10 +239,16 @@ _ackAlert2(BuildContext context) {
                           child: Container(
                             width: MediaQuery.of(context).size.width / 2,
                             height: MediaQuery.of(context).size.width / 6,
-                            child: Text(
-                              "Monhon maaf Lokasi Anda Belum Tercover!",
-                              style: TextStyle(
-                                  fontSize: 20.0, fontWeight: FontWeight.w700),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  "Mohon maaf Lokasi Anda Belum Tercover!",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                Text("Silahkan Hubungi Life Media Center"),
+                              ],
                             ),
                           ),
                         ),
@@ -245,26 +256,45 @@ _ackAlert2(BuildContext context) {
                     )
                   ],
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FirstPage()),
-                    );
-                  },
-                  child: Text(
-                    "kemabli",
-                    style: TextStyle(
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.red),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        "kemabli",
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.red),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: InkWell(
+                          onTap: () {
+                            whatsAppOpen();
+                          },
+                          child: Image.asset(
+                            'assets/img/whatsapp.png',
+                            width: 50.0,
+                            height: 50.0,
+                          )),
+                    )
+                  ],
                 ),
               ],
             ),
           ),
         );
       });
+}
+
+void whatsAppOpen() async {
+  await FlutterLaunch.launchWathsApp(phone: "622746055655", message: "Hello");
 }
 
 const List<Color> signInGradients = [

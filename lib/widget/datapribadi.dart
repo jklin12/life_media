@@ -9,13 +9,13 @@ class DataPribadi extends StatefulWidget {
 
 class _DataPribadiState extends State<DataPribadi> {
   final _key = new GlobalKey<FormState>();
-  String nama;
-  String brand;
-  String pekerjaan;
-  String nohp;
-  String email;
-  String notlp;
-  String noid;
+  final nama = TextEditingController(text: '');
+  final brand = TextEditingController(text: '');
+  final pekerjaan = TextEditingController(text: '');
+  final nohp = TextEditingController(text: '');
+  final email = TextEditingController(text: '');
+  final notlp = TextEditingController(text: '');
+  final noid = TextEditingController(text: '');
 
   int _radioValue1 = -1;
 
@@ -152,7 +152,16 @@ class _DataPribadiState extends State<DataPribadi> {
                     "Masukan Email"),
                 InkWell(
                     onTap: () {
-                      if (_key.currentState.validate()) {
+                      final form = _key.currentState;
+                      if (form.validate()) {
+                        _key.currentState.save();
+                        print(nama.text);
+                        print(brand.text);
+                        print(pekerjaan.text);
+                        print(noid.text);
+                        print(nohp.text);
+                        print(notlp.text);
+                        print(email.text);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Penagihan()),
@@ -170,8 +179,8 @@ class _DataPribadiState extends State<DataPribadi> {
   }
 }
 
-Widget inputData(String hintText, String labelText, String onSave, bool lock,
-    String validater) {
+Widget inputData(String hintText, String labelText,
+    TextEditingController onSave, bool lock, String validater) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
@@ -182,8 +191,7 @@ Widget inputData(String hintText, String labelText, String onSave, bool lock,
           }
           return null;
         },
-        enabled: lock,
-        onSaved: (e) => onSave = e,
+        controller: onSave,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(15),
             labelText: labelText,

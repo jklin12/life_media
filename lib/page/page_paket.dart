@@ -10,7 +10,7 @@ class PilihPaket extends StatefulWidget {
 class _PilihPaketState extends State<PilihPaket> {
   @override
   Widget build(BuildContext context) {
-   return SafeArea(
+    return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,

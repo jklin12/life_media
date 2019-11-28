@@ -3,6 +3,7 @@ import 'package:life_media_demo/page/first_page.dart';
 import 'package:geolocator/geolocator.dart';
 
 class PPaket extends StatefulWidget {
+
   @override
   _PPaketState createState() => _PPaketState();
 }
@@ -23,7 +24,7 @@ class _PPaketState extends State<PPaket> {
   final _key = new GlobalKey<FormState>();
   int _radioValue1 = -1;
   int _radioValue2 = -1;
-  String waktu;
+  final waktu = TextEditingController();
   bool _termsChecked = false;
 
   void _handleRadioValueChange1(
@@ -247,7 +248,7 @@ class _PPaketState extends State<PPaket> {
                               );
                               Scaffold.of(context).showSnackBar(sncakbar);
                             } else {
-                              print("Oke!");
+                              print(waktu.text);
                               _ackAlert(context);
                               requestLocationPermission(context);
                             }
@@ -278,8 +279,8 @@ Widget sncakbar(String notif) {
   });
 }
 
-Widget inputData(String hintText, String labelText, String onSave, bool lock,
-    String validater) {
+Widget inputData(String hintText, String labelText,
+    TextEditingController onSave, bool lock, String validater) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
@@ -290,8 +291,7 @@ Widget inputData(String hintText, String labelText, String onSave, bool lock,
           }
           return null;
         },
-        enabled: lock,
-        onSaved: (e) => onSave = e,
+        controller: onSave,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(15),
             labelText: labelText,

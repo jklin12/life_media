@@ -27,6 +27,8 @@ dependencies:
   datetime_picker_formfield:
   http:
   json_to_form:
+  shared_preferences:
+  flutter_launch:
 
 dev_dependencies:
   flutter_test:
@@ -78,3 +80,4 @@ flutter:
     - assets/img/bg.png
     - assets/img/logo.png
     - assets/img/lg_htm.png
+    - assets/img/whatsapp.png

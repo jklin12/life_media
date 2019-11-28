@@ -8,11 +8,12 @@ class Widgetpenagihan extends StatefulWidget {
 
 class _WidgetpenagihanState extends State<Widgetpenagihan> {
   final _key = new GlobalKey<FormState>();
-  String namapenerima;
-  String alamatpenerima;
-  String notlp;
-  String nohp;
-  String email;
+
+  final namapenerima = TextEditingController();
+  final alamatpenerima = TextEditingController();
+  final notlp = TextEditingController();
+  final nohp = TextEditingController();
+  final email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -28,7 +29,8 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
                         "Data Penagihan",
@@ -37,7 +39,7 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
                             fontWeight: FontWeight.w700,
                             color: Colors.blueGrey)),
                       ),
-                         IconButton(
+                      IconButton(
                         icon: Icon(Icons.arrow_back),
                         color: Colors.blueGrey,
                         onPressed: () {
@@ -67,10 +69,16 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
                 InkWell(
                     onTap: () {
                       if (_key.currentState.validate()) {
+                        print(namapenerima.text);
+                        print(alamatpenerima.text);
+                        print(notlp.text);
+                        print(nohp.text);
+                        print(email.text);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PilihPaket()),
+                              builder: (context) => PilihPaket(
+                                  )),
                         );
                       }
                     },
@@ -85,8 +93,8 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
   }
 }
 
-Widget inputData(String hintText, String labelText, String onSave, bool lock,
-    String validater) {
+Widget inputData(String hintText, String labelText,
+    TextEditingController onSave, bool lock, String validater) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
@@ -97,8 +105,7 @@ Widget inputData(String hintText, String labelText, String onSave, bool lock,
           }
           return null;
         },
-        enabled: lock,
-        onSaved: (e) => onSave = e,
+        controller: onSave,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(15),
             labelText: labelText,
@@ -135,8 +142,6 @@ Widget roundedRectButton(
     );
   });
 }
-
-
 
 const List<Color> signInGradients = [
   Color(0xFF0EDED2),
