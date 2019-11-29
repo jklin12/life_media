@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
 
   login() async {
     final response = await http.post("http://192.168.1.69/test.php",
-        body: {"lat": "31.24916", "long": "121.4878983"});
+        body: {"lat": latd, "long": longi});
 
     final data = jsonDecode(response.body);
     int value = data['value'];
@@ -46,12 +46,13 @@ class _LoginState extends State<Login> {
   }
 
   void cek() async {
-    login();
+    setState(() {
+      print(latd);
+      print(longi);
+      login();
+    });
+    await Future.delayed(Duration(seconds: 5));
     requestLocationPermission(context);
-    latd = position.latitude.toString();
-    longi = position.longitude.toString();
-    print(latd);
-    print(longi);
   }
 
   void _onLoading() {
@@ -71,6 +72,7 @@ class _LoginState extends State<Login> {
   @override
   initState() {
     super.initState();
+    requestLocationPermission(context);
   }
 
   @override
@@ -95,7 +97,7 @@ class _LoginState extends State<Login> {
                   child: roundedRectButton("Masuk", signInGradients, false)),
               InkWell(
                   onTap: () {
-                    _onLoading();
+                    cek();
                   },
                   child: roundedRectButton("Daftar", signUpGradients, false)),
               Text(
