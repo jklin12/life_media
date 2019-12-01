@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_media_demo/widget/Widget_penagihan.dart';
-import 'package:life_media_demo/widget/bg.dart';
+import 'package:life_media_demo/widget/bg2.dart';
 
 class Penagihan extends StatefulWidget {
   @override
@@ -12,10 +12,9 @@ class _PenagihanState extends State<Penagihan> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: Stack(
-          children: <Widget>[Backgroud(),Widgetpenagihan()],
+          children: <Widget>[Background2(),Widgetpenagihan()],
         ),
       ),
     );

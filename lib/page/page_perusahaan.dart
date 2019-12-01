@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_media_demo/widget/bg.dart';
+import 'package:life_media_demo/widget/bg2.dart';
 import 'package:life_media_demo/widget/registerdataperusahaan.dart';
 
 class RegisterPage2 extends StatefulWidget {
@@ -12,10 +13,9 @@ class _RegisterPage2State extends State<RegisterPage2> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: Stack(
-          children: <Widget>[Backgroud(), Register()],
+          children: <Widget>[Background2(), Register()],
         ),
       ),
     );

@@ -47,15 +47,14 @@ class _LoginState extends State<Login> {
 
   void cek() async {
     setState(() {
-      print(latd);
-      print(longi);
-      login();
+      print(latd = position.latitude.toString());
+      print(longi = position.longitude.toString());
+      _ackAlert(context);
     });
-    await Future.delayed(Duration(seconds: 5));
-    requestLocationPermission(context);
   }
 
   void _onLoading() {
+    requestLocationPermission(context);
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -97,7 +96,7 @@ class _LoginState extends State<Login> {
                   child: roundedRectButton("Masuk", signInGradients, false)),
               InkWell(
                   onTap: () {
-                    cek();
+                    _onLoading();
                   },
                   child: roundedRectButton("Daftar", signUpGradients, false)),
               Text(
@@ -163,8 +162,8 @@ _ackAlert(BuildContext context) {
               borderRadius: BorderRadius.all(Radius.circular(15.0))),
           contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
-            width: MediaQuery.of(context).size.width / 1.2,
-            height: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: MediaQuery.of(context).size.width / 2.8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -173,17 +172,21 @@ _ackAlert(BuildContext context) {
                   children: <Widget>[
                     Icon(
                       Icons.check_circle_outline,
-                      size: 80.0,
+                      size: 60.0,
                       color: Colors.yellowAccent,
                     ),
                     Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Selamat Lokasi Anda Tercover!",
-                            style: TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 3,
+                            height: MediaQuery.of(context).size.width / 6,
+                            child: Text(
+                              "Selamat Lokasi Anda Tercover!",
+                              style: TextStyle(
+                                  fontSize: 15.0, fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
                       ],
@@ -197,12 +200,15 @@ _ackAlert(BuildContext context) {
                       MaterialPageRoute(builder: (context) => PageSelect()),
                     );
                   },
-                  child: Text(
-                    "Lanjutkan",
-                    style: TextStyle(
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.red),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      "Lanjutkan",
+                      style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red),
+                    ),
                   ),
                 ),
               ],
@@ -221,8 +227,8 @@ _ackAlert2(BuildContext context) {
               borderRadius: BorderRadius.all(Radius.circular(15.0))),
           contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
-            width: MediaQuery.of(context).size.width / 1.2,
-            height: MediaQuery.of(context).size.width / 2.5,
+            width: MediaQuery.of(context).size.width / 1.8,
+            height: MediaQuery.of(context).size.width / 1.5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -239,14 +245,14 @@ _ackAlert2(BuildContext context) {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            height: MediaQuery.of(context).size.width / 6,
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            height: MediaQuery.of(context).size.width / 3.5,
                             child: Column(
                               children: <Widget>[
                                 Text(
                                   "Mohon maaf Lokasi Anda Belum Tercover!",
                                   style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 18.0,
                                       fontWeight: FontWeight.w700),
                                 ),
                                 Text("Silahkan Hubungi Life Media Center"),
@@ -282,8 +288,8 @@ _ackAlert2(BuildContext context) {
                           },
                           child: Image.asset(
                             'assets/img/whatsapp.png',
-                            width: 50.0,
-                            height: 50.0,
+                            width: 30.0,
+                            height: 30.0,
                           )),
                     )
                   ],

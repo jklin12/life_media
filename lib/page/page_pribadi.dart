@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_media_demo/widget/bg.dart';
+import 'package:life_media_demo/widget/bg2.dart';
 import 'package:life_media_demo/widget/datapribadi.dart';
 
 class RdataPribadi extends StatefulWidget {
@@ -10,12 +11,11 @@ class RdataPribadi extends StatefulWidget {
 class _RdataPribadiState extends State<RdataPribadi> {
   @override
   Widget build(BuildContext context) {
-      return SafeArea(
+    return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: Stack(
-          children: <Widget>[Backgroud(), DataPribadi()],
+          children: <Widget>[Background2(), DataPribadi()],
         ),
       ),
     );

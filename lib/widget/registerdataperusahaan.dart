@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:life_media_demo/page/page_pribadi.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _RegisterState extends State<Register> {
     });
 
     final data = jsonDecode(response.body);
-    String  value = data['value'];
+    String value = data['value'];
     String pesan = data['status'];
     if (value == "200") {
       print(pesan);
@@ -161,7 +162,11 @@ class _RegisterState extends State<Register> {
                     _radioValue1 < 0),
                 InkWell(
                   onTap: () {
-                    if (_key.currentState.validate()) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RdataPribadi()),
+                    );
+                    /*if (_key.currentState.validate()) {
                       if (_radioValue1 < 0) {
                         {
                           final snackBar = SnackBar(
@@ -174,16 +179,11 @@ class _RegisterState extends State<Register> {
                           Scaffold.of(context).showSnackBar(snackBar);
                         }
                       } else {
-                        /*Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RdataPribadi()),
-                        );*/
                         insert();
                         print(
                             "$savenama $savenamanpwp $savenonpwp $savealmatnpwp ");
                       }
-                    }
+                    }*/
                   },
                   child:
                       roundedRectButton("Selanjutnya", signUpGradients, false),

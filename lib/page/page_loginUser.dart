@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_media_demo/widget/bg.dart';
+import 'package:life_media_demo/widget/bg2.dart';
 import 'package:life_media_demo/widget/widget_loginuser.dart';
 
 class UserLogin extends StatefulWidget {
@@ -12,11 +13,12 @@ class _UserLoginState extends State<UserLogin> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomPadding: true,
+        
         backgroundColor: Colors.white,
        body: Stack(
          children: <Widget>[
-           Backgroud(),WidgetUserLogin()
+          Background2(),WidgetUserLogin()
          ],
        ),
       ),

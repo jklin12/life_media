@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Backgroud extends StatelessWidget {
+class Background2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
@@ -31,14 +30,6 @@ class Backgroud extends StatelessWidget {
           Expanded(
             child: Container(),
           ),
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: <Widget>[
-              WavyFooter(),
-              CirclePink(),
-              CircleYellow(),
-            ],
-          )
         ],
       ),
     );

@@ -3,7 +3,6 @@ import 'package:life_media_demo/page/first_page.dart';
 import 'package:geolocator/geolocator.dart';
 
 class PPaket extends StatefulWidget {
-
   @override
   _PPaketState createState() => _PPaketState();
 }
@@ -226,36 +225,39 @@ class _PPaketState extends State<PPaket> {
                         value: _termsChecked,
                         onChanged: (bool value) =>
                             setState(() => _termsChecked = value)),
-                    InkWell(
-                        onTap: () {
-                          if (_key.currentState.validate()) {
-                            if (_radioValue1 < 0) {
-                              final sncakbar = SnackBar(
-                                content: Text("Pilih Paket internet"),
-                                action: SnackBarAction(
-                                  label: 'Ok!',
-                                  onPressed: () {},
-                                ),
-                              );
-                              Scaffold.of(context).showSnackBar(sncakbar);
-                            } else if (!_termsChecked) {
-                              final sncakbar = SnackBar(
-                                content: Text("Setujui Syarat dan Ketentuan!"),
-                                action: SnackBarAction(
-                                  label: 'Ok!',
-                                  onPressed: () {},
-                                ),
-                              );
-                              Scaffold.of(context).showSnackBar(sncakbar);
-                            } else {
-                              print(waktu.text);
-                              _ackAlert(context);
-                              requestLocationPermission(context);
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                          onTap: () {
+                            if (_key.currentState.validate()) {
+                              if (_radioValue1 < 0) {
+                                final sncakbar = SnackBar(
+                                  content: Text("Pilih Paket internet"),
+                                  action: SnackBarAction(
+                                    label: 'Ok!',
+                                    onPressed: () {},
+                                  ),
+                                );
+                                Scaffold.of(context).showSnackBar(sncakbar);
+                              } else if (!_termsChecked) {
+                                final sncakbar = SnackBar(
+                                  content: Text("Setujui Syarat dan Ketentuan!"),
+                                  action: SnackBarAction(
+                                    label: 'Ok!',
+                                    onPressed: () {},
+                                  ),
+                                );
+                                Scaffold.of(context).showSnackBar(sncakbar);
+                              } else {
+                                print(waktu.text);
+                                _ackAlert(context);
+                                requestLocationPermission(context);
+                              }
                             }
-                          }
-                        },
-                        child: roundedRectButton(
-                            "Selanjutnya", signUpGradients, true))
+                          },
+                          child: roundedRectButton(
+                              "Selanjutnya", signUpGradients, true)),
+                    )
                   ],
                 ),
               ],
@@ -338,8 +340,8 @@ _ackAlert(BuildContext context) {
               borderRadius: BorderRadius.all(Radius.circular(32.0))),
           contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
-            width: MediaQuery.of(context).size.width / 1.2,
-            height: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: MediaQuery.of(context).size.width / 1.8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -348,25 +350,32 @@ _ackAlert(BuildContext context) {
                   children: <Widget>[
                     Icon(
                       Icons.check_circle_outline,
-                      size: 80.0,
+                      size: 60.0,
                       color: Colors.yellowAccent,
                     ),
-                    Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Selamat Anda Sudah Mendaftar!",
-                            style: TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2.5,
+                      height: MediaQuery.of(context).size.width / 2.8,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Selamat Anda Sudah Mendaftar!",
+                              style: TextStyle(
+                                  fontSize: 18.0, fontWeight: FontWeight.w700),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Tunggu Pemberitahuan selanjutnya",
-                          style: TextStyle(
-                              fontSize: 15.0, fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Tunggu Pemberitahuan selanjutnya",
+                              style: TextStyle(
+                                  fontSize: 12.0, fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -377,12 +386,15 @@ _ackAlert(BuildContext context) {
                       MaterialPageRoute(builder: (context) => FirstPage()),
                     );
                   },
-                  child: Text(
-                    "Kembali",
-                    style: TextStyle(
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.red),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Kembali",
+                      style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red),
+                    ),
                   ),
                 ),
               ],
