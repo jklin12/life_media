@@ -14,7 +14,9 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         drawer: Mydrawer(),
-        appBar: MyCustomAppBar(height: 150.0,),
+        appBar: MyCustomAppBar(
+          height: 70.0,
+        ),
         resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: Stack(

@@ -12,15 +12,12 @@ class BgDashboard extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             children: <Widget>[
               Column(
-                children: <Widget>[
-             
-                
-                ],
+                children: <Widget>[],
               ),
             ],
           ),
           Expanded(
-            child: Container(),
+            child: Container(color: Colors.red,),
           ),
           Stack(
             alignment: Alignment.bottomLeft,
@@ -46,7 +43,6 @@ const List<Color> aquaGradients = [
   Color(0xFF5AEAF1),
   Color(0xFF8EF7DA),
 ];
-
 
 class WavyFooter extends StatelessWidget {
   @override

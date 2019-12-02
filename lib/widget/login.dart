@@ -28,7 +28,8 @@ class _LoginState extends State<Login> {
   }
 
   login() async {
-    final response = await http.post("http://192.168.1.69/test.php",
+    final response = await http.post(
+        "http://202.169.224.10/applifemedia/test.php",
         body: {"lat": latd, "long": longi});
 
     final data = jsonDecode(response.body);
@@ -49,7 +50,7 @@ class _LoginState extends State<Login> {
     setState(() {
       print(latd = position.latitude.toString());
       print(longi = position.longitude.toString());
-      _ackAlert(context);
+      login();
     });
   }
 
@@ -273,7 +274,7 @@ _ackAlert2(BuildContext context) {
                         Navigator.pop(context);
                       },
                       child: Text(
-                        "kemabli",
+                        "kembali",
                         style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.w500,

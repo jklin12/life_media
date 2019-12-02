@@ -15,11 +15,11 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Container(
           color: Colors.white,
           child: Padding(
-            padding: EdgeInsets.all(30),
-            child: Card(elevation: 6,
+            padding: EdgeInsets.all(10.0),
+            child: Card(elevation: 10,
                           child: Container(
+                            height: 40.0,
                 color: Colors.white,
-                padding: EdgeInsets.all(5),
                 child: Row(children: [
                   IconButton(
                     icon: Icon(Icons.menu),
@@ -49,3 +49,9 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(height);
 }
+
+
+const List<Color> signInGradients = [
+  Color(0xFF0EDED2),
+  Color(0xFF03A0FE),
+];
