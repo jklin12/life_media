@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg.dart';
 import 'package:life_media_demo/widget/bg2.dart';
 import 'package:life_media_demo/widget/registerdataperusahaan.dart';
 

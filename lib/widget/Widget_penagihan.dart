@@ -2,6 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:life_media_demo/page/page_paket.dart';
 
 class Widgetpenagihan extends StatefulWidget {
+  Widgetpenagihan(
+      {this.nama,
+      this.brand,
+      this.pekerjaan,
+      this.email,
+      this.nohp,
+      this.noid,
+      this.notlp,
+      this.jnsid,
+      this.jnsklmn,
+      this.alamat,
+      this.tgllhr});
+
+  final String nama;
+  final String brand;
+  final String pekerjaan;
+  final String nohp;
+  final String email;
+  final String notlp;
+  final String noid;
+  final String jnsid;
+  final String alamat;
+  final String jnsklmn;
+  final String tgllhr;
+
   @override
   _WidgetpenagihanState createState() => _WidgetpenagihanState();
 }
@@ -57,27 +82,39 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
                   ),
                 ),
                 inputData("ex : faris ", "Nama Penerima", namapenerima, true,
-                    "Masukan Nama"),
+                    "Masukan Nama",TextInputType.text),
                 inputData("ex : Jl sudirman no 1 ,yogyakarta  ",
-                    "Alamat Penagihan", alamatpenerima, true, "Masukan Alamat"),
+                    "Alamat Penagihan", alamatpenerima, true, "Masukan Alamat",TextInputType.text),
                 inputData("ex: 021 844566 ", "no Telfon", notlp, true,
-                    "Masukan Nomor Telfon"),
+                    "Masukan Nomor Telfon",TextInputType.number),
                 inputData("ex: 085769213588", "no Hp", nohp, true,
-                    "Masukan Nomor HP"),
+                    "Masukan Nomor HP",TextInputType.number),
                 inputData("ex: lifemedia@mail.com", "Email", email, true,
-                    "Masukan Email"),
+                    "Masukan Email",TextInputType.text),
                 InkWell(
                     onTap: () {
+                      print(widget.tgllhr);
                       if (_key.currentState.validate()) {
-                        print(namapenerima.text);
-                        print(alamatpenerima.text);
-                        print(notlp.text);
-                        print(nohp.text);
-                        print(email.text);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => PilihPaket(
+                                    nama: widget.nama,
+                                    brand: widget.brand,
+                                    pekerjaan: widget.pekerjaan,
+                                    notlp: widget.notlp,
+                                    nohp: widget.nohp,
+                                    noid: widget.noid,
+                                    email: widget.email,
+                                    jnsklmn: widget.jnsklmn,
+                                    alamat: widget.alamat,
+                                    jnsid: widget.jnsid,
+                                    namapenerima: namapenerima.text,
+                                    alamatpenerima: alamatpenerima.text,
+                                    notlppenerima: notlp.text,
+                                    nohppenerima: nohp.text,
+                                    emailpenerima: email.text,
+                                    tgllhr: widget.tgllhr,
                                   )),
                         );
                       }
@@ -94,11 +131,12 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
 }
 
 Widget inputData(String hintText, String labelText,
-    TextEditingController onSave, bool lock, String validater) {
+    TextEditingController onSave, bool lock, String validater, TextInputType inputype) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: TextFormField(
+        keyboardType: inputype,
         validator: (value) {
           if (value.isEmpty) {
             return validater;

@@ -1,4 +1,0 @@
-storePassword=<password from previous step>
-keyPassword=<password from previous step>
-keyAlias=key
-storeFile=<c:/Users/homef/key.jks>

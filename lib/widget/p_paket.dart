@@ -1,22 +1,103 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:life_media_demo/page/first_page.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
+import 'package:life_media_demo/test.dart';
 
 class PPaket extends StatefulWidget {
+  PPaket({
+    this.nama,
+    this.brand,
+    this.pekerjaan,
+    this.email,
+    this.nohp,
+    this.noid,
+    this.notlp,
+    this.namapenerima,
+    this.alamatpenerima,
+    this.notlppenerima,
+    this.nohppenerima,
+    this.emailpenerima,
+    this.jnsid,
+    this.jnsklmn,
+    this.alamat,
+    this.tgllhr,
+  });
+
+  final String nama;
+  final String brand;
+  final String pekerjaan;
+  final String nohp;
+  final String email;
+  final String notlp;
+  final String noid;
+  final String jnsid;
+  final String alamat;
+  final String jnsklmn;
+  final String namapenerima;
+  final String alamatpenerima;
+  final String notlppenerima;
+  final String nohppenerima;
+  final String emailpenerima;
+  final String tgllhr;
+
   @override
   _PPaketState createState() => _PPaketState();
 }
 
 class _PPaketState extends State<PPaket> {
-  Position position;
+  insert() async {
+    final response = await http.post(
+        "http://202.169.224.10/applifemedia/api_pendaftaran/index.php/Daftar",
+        body: {
+          "nama_prsh": "sim",
+          "nama_npwp": "sims",
+          "no_npwp": "12345",
+          "alamat_npwp": "jljaksas",
+          "nama_prb": widget.nama,
+          "nama_brand": widget.brand,
+          "jns_id": widget.jnsid,
+          "tgl_lhr": widget.tgllhr,
+          "no_id": widget.noid,
+          "jns_klmn": widget.jnsklmn,
+          "pekerjaan": widget.pekerjaan,
+          "no_tlp_prb": widget.notlp,
+          "no_hp_prb": widget.nohp,
+          "email_prb": widget.email,
+          "alamat_prb": widget.alamat,
+          "nama_tgh": widget.namapenerima,
+          "alamat_tgh": widget.alamatpenerima,
+          "no_tlp_tgh": widget.notlppenerima,
+          "no_hp_tgh": widget.nohppenerima,
+          "email_tgh": widget.emailpenerima,
+          "pkt_tv_kbl": pakettv,
+          "pkt_int": paketint,
+          "jangka_wkt": waktu.text,
+          "sk": "1"
+        });
 
-  void requestLocationPermission(BuildContext context) async {
-    Position currentPosition = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    final data = jsonDecode(response.body);
+    String value = data['value'];
+    String pesan = data['status'];
+    if (value == "200") {
+      print(pesan);
+      _ackAlert(context);
+    } else {
+      print(pesan);
+    }
+    return CircularProgressIndicator();
+  }
 
-    setState(() {
-      position = currentPosition;
-      print(position);
+  void _onLoading() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return ColorLoader3();
+        });
+    new Future.delayed(new Duration(seconds: 3), () {
+      insert();
     });
   }
 
@@ -26,6 +107,9 @@ class _PPaketState extends State<PPaket> {
   final waktu = TextEditingController();
   bool _termsChecked = false;
 
+  String pakettv = "";
+  String paketint = "";
+
   void _handleRadioValueChange1(
     int value,
   ) {
@@ -34,13 +118,13 @@ class _PPaketState extends State<PPaket> {
 
       switch (_radioValue1) {
         case 0:
-          print("open");
+          paketint = "20mb";
           break;
         case 1:
-          print("close");
+          paketint = "50mb";
           break;
         case 2:
-          print("close");
+          paketint = "100mb";
           break;
       }
     });
@@ -59,10 +143,10 @@ class _PPaketState extends State<PPaket> {
 
       switch (_radioValue2) {
         case 0:
-          print("open");
+          pakettv = "live Vu";
           break;
         case 1:
-          print("close");
+          pakettv = "live Vision";
           break;
       }
     });
@@ -214,7 +298,6 @@ class _PPaketState extends State<PPaket> {
                     CheckboxListTile(
                         title: InkWell(
                           onTap: () {
-                            print("test!");
                             _ackAlertSK(context);
                           },
                           child: new Text(
@@ -241,7 +324,8 @@ class _PPaketState extends State<PPaket> {
                                 Scaffold.of(context).showSnackBar(sncakbar);
                               } else if (!_termsChecked) {
                                 final sncakbar = SnackBar(
-                                  content: Text("Setujui Syarat dan Ketentuan!"),
+                                  content:
+                                      Text("Setujui Syarat dan Ketentuan!"),
                                   action: SnackBarAction(
                                     label: 'Ok!',
                                     onPressed: () {},
@@ -249,9 +333,7 @@ class _PPaketState extends State<PPaket> {
                                 );
                                 Scaffold.of(context).showSnackBar(sncakbar);
                               } else {
-                                print(waktu.text);
-                                _ackAlert(context);
-                                requestLocationPermission(context);
+                                _onLoading();
                               }
                             }
                           },

@@ -69,7 +69,7 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
       preferences.setString("nama", nama);
       preferences.setString("email", email);
       preferences.setString("id", id);
-      preferences.commit();
+     
     });
   }
 
@@ -87,7 +87,7 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", null);
-      preferences.commit();
+  
       _loginStatus = LoginStatus.notSignIn;
     });
   }
