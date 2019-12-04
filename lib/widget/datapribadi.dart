@@ -3,6 +3,10 @@ import 'package:life_media_demo/page/page_penagihan.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class DataPribadi extends StatefulWidget {
+  DataPribadi({this.namaprhs, this.nonpwp, this.namanpwp, this.alamatnpwp});
+
+  String namaprhs, nonpwp, namanpwp, alamatnpwp;
+
   @override
   _DataPribadiState createState() => _DataPribadiState();
 }
@@ -58,10 +62,10 @@ class _DataPribadiState extends State<DataPribadi> {
 
       switch (_radioValue2) {
         case 0:
-          jnsklmn = "Laki-Laki";
+          jnsklmn = "Perempuan";
           break;
         case 1:
-          jnsklmn = "Perempuan";
+          jnsklmn = "Laki-Laki";
 
           break;
       }
@@ -117,12 +121,8 @@ class _DataPribadiState extends State<DataPribadi> {
                 ),
                 inputData("ex: faris", "Nama Lengkap", nama, true,
                     "Masukan Nama", TextInputType.text),
-                inputData2(
-                  "ex: life media",
-                  "Nama Brand",
-                  brand,
-                  true,
-                ),
+                inputData2("ex: life media", "Nama Brand", brand, true,
+                    TextInputType.text),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 10, 10, 5),
                   child: new Text(
@@ -269,8 +269,8 @@ class _DataPribadiState extends State<DataPribadi> {
                 ),
                 inputData("ex: Sales", "Pekerjaan", pekerjaan, true,
                     "Masukan pekerjaan", TextInputType.text),
-                inputData("ex: 021 844566 ", "no Telfon", notlp, true,
-                    "Masukan No Telfon", TextInputType.number),
+                inputData2("ex: 021 844566 ", "no Telfon", notlp, true,
+                    TextInputType.number),
                 inputData("ex: 085769213588", "no Hp", nohp, true,
                     "Masukan Nomor Hp", TextInputType.number),
                 inputData("ex: lifemedia@mail.com", "Email", email, true,
@@ -296,6 +296,10 @@ class _DataPribadiState extends State<DataPribadi> {
                                     jnsklmn: jnsklmn,
                                     alamatprb: alamat.text,
                                     tgllhr: _date,
+                                    namaprhs: widget.namaprhs,
+                                    namanpwp: widget.namanpwp,
+                                    nonpwp: widget.nonpwp,
+                                    alamatnpwp: widget.alamatnpwp,
                                   )),
                         );
                       }
@@ -341,16 +345,13 @@ Widget inputData(
   });
 }
 
-Widget inputData2(
-  String hintText,
-  String labelText,
-  TextEditingController onSave,
-  bool lock,
-) {
+Widget inputData2(String hintText, String labelText,
+    TextEditingController onSave, bool lock, TextInputType inputtype) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: TextFormField(
+        keyboardType: inputtype,
         controller: onSave,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(15),

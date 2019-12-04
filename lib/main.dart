@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      initialRoute: '/',
+      routes: {
+        '/exit': (BuildContext context) => FirstPage()
+      },
       home: FirstPage(),
     );
   }

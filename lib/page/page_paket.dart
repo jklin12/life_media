@@ -19,7 +19,11 @@ class PilihPaket extends StatefulWidget {
       this.jnsid,
       this.alamat,
       this.jnsklmn,
-      this.tgllhr});
+      this.tgllhr,
+      this.namaprhs,
+      this.nonpwp,
+      this.namanpwp,
+      this.alamatnpwp});
 
   final String nama;
   final String brand;
@@ -37,6 +41,8 @@ class PilihPaket extends StatefulWidget {
   final String nohppenerima;
   final String emailpenerima;
   final String tgllhr;
+  final String namaprhs, nonpwp, namanpwp, alamatnpwp;
+
   @override
   _PilihPaketState createState() => _PilihPaketState();
 }
@@ -67,6 +73,10 @@ class _PilihPaketState extends State<PilihPaket> {
               notlppenerima: widget.notlppenerima,
               emailpenerima: widget.emailpenerima,
               tgllhr: widget.tgllhr,
+              namaprhs: widget.namaprhs,
+              namanpwp: widget.namanpwp,
+              nonpwp: widget.nonpwp,
+              alamatnpwp: widget.alamatnpwp,
             )
           ],
         ),

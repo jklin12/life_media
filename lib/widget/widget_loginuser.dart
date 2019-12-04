@@ -69,7 +69,6 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
       preferences.setString("nama", nama);
       preferences.setString("email", email);
       preferences.setString("id", id);
-     
     });
   }
 
@@ -87,7 +86,7 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", null);
-  
+
       _loginStatus = LoginStatus.notSignIn;
     });
   }
@@ -116,8 +115,8 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(top: 100.0),
-                      child: Image.network(
-                        "http://lifemedia.id/wp-content/uploads/2019/09/cropped-favicon-1.png",
+                      child: Image.asset(
+                        'assets/img/icon_new.png',
                         height: MediaQuery.of(context).size.height / 8,
                         width: MediaQuery.of(context).size.width / 8,
                       ),

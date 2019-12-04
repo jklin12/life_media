@@ -13,7 +13,11 @@ class Widgetpenagihan extends StatefulWidget {
       this.jnsid,
       this.jnsklmn,
       this.alamat,
-      this.tgllhr});
+      this.tgllhr,
+      this.namaprhs,
+      this.nonpwp,
+      this.namanpwp,
+      this.alamatnpwp});
 
   final String nama;
   final String brand;
@@ -26,6 +30,7 @@ class Widgetpenagihan extends StatefulWidget {
   final String alamat;
   final String jnsklmn;
   final String tgllhr;
+  final String namaprhs, nonpwp, namanpwp, alamatnpwp;
 
   @override
   _WidgetpenagihanState createState() => _WidgetpenagihanState();
@@ -82,15 +87,20 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
                   ),
                 ),
                 inputData("ex : faris ", "Nama Penerima", namapenerima, true,
-                    "Masukan Nama",TextInputType.text),
-                inputData("ex : Jl sudirman no 1 ,yogyakarta  ",
-                    "Alamat Penagihan", alamatpenerima, true, "Masukan Alamat",TextInputType.text),
-                inputData("ex: 021 844566 ", "no Telfon", notlp, true,
-                    "Masukan Nomor Telfon",TextInputType.number),
+                    "Masukan Nama", TextInputType.text),
+                inputData(
+                    "ex : Jl sudirman no 1 ,yogyakarta  ",
+                    "Alamat Penagihan",
+                    alamatpenerima,
+                    true,
+                    "Masukan Alamat",
+                    TextInputType.text),
+                inputData2("ex: 021 844566 ", "no Telfon", notlp, true,
+                    TextInputType.number),
                 inputData("ex: 085769213588", "no Hp", nohp, true,
-                    "Masukan Nomor HP",TextInputType.number),
+                    "Masukan Nomor HP", TextInputType.number),
                 inputData("ex: lifemedia@mail.com", "Email", email, true,
-                    "Masukan Email",TextInputType.text),
+                    "Masukan Email", TextInputType.text),
                 InkWell(
                     onTap: () {
                       print(widget.tgllhr);
@@ -115,6 +125,10 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
                                     nohppenerima: nohp.text,
                                     emailpenerima: email.text,
                                     tgllhr: widget.tgllhr,
+                                    namaprhs: widget.namaprhs,
+                                    namanpwp: widget.namanpwp,
+                                    nonpwp: widget.nonpwp,
+                                    alamatnpwp: widget.alamatnpwp,
                                   )),
                         );
                       }
@@ -130,8 +144,13 @@ class _WidgetpenagihanState extends State<Widgetpenagihan> {
   }
 }
 
-Widget inputData(String hintText, String labelText,
-    TextEditingController onSave, bool lock, String validater, TextInputType inputype) {
+Widget inputData(
+    String hintText,
+    String labelText,
+    TextEditingController onSave,
+    bool lock,
+    String validater,
+    TextInputType inputype) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
@@ -143,6 +162,25 @@ Widget inputData(String hintText, String labelText,
           }
           return null;
         },
+        controller: onSave,
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.all(15),
+            labelText: labelText,
+            hintText: hintText,
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+      ),
+    );
+  });
+}
+
+Widget inputData2(String hintText, String labelText,
+    TextEditingController onSave, bool lock, TextInputType inputtype) {
+  return Builder(builder: (BuildContext mContext) {
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: TextFormField(
+        keyboardType: inputtype,
         controller: onSave,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(15),

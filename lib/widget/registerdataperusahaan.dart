@@ -21,27 +21,6 @@ class _RegisterState extends State<Register> {
   int _radioValue1 = -1;
   bool _statutsFormField;
 
-  insert() async {
-    final response = await http
-        .post("http://192.168.1.69/ci-restserver/index.php/kontak", body: {
-      "nama_prsh": savenama.text,
-      "npwp": "1",
-      "nama_npwp": savenamanpwp.text,
-      "no_npwp": savenonpwp.text,
-      "alamat_npwp": savealmatnpwp.text
-    });
-
-    final data = jsonDecode(response.body);
-    String value = data['value'];
-    String pesan = data['status'];
-    if (value == "200") {
-      print(pesan);
-    } else {
-      print(pesan);
-    }
-    return CircularProgressIndicator();
-  }
-
   void _handleRadioValueChange1(
     int value,
   ) {
@@ -149,22 +128,41 @@ class _RegisterState extends State<Register> {
                     )
                   ],
                 ),
-                inputData("ex : Budi Harsono", "Nama Npwp", savenamanpwp,
-                    "Masukan Nama NPWP", _statutsFormField, _radioValue1 < 0),
-                inputData("ex : 0123456", "No Npwp", savenonpwp,
-                    "Masukan Nomor NPWP", _statutsFormField, _radioValue1 < 0),
+                inputData(
+                    "ex : Budi Harsono",
+                    "Nama Npwp",
+                    savenamanpwp,
+                    "Masukan Nama NPWP",
+                    _statutsFormField,
+                    _radioValue1 < 0,
+                    TextInputType.text),
+                inputData(
+                    "ex : 0123456",
+                    "No Npwp",
+                    savenonpwp,
+                    "Masukan Nomor NPWP",
+                    _statutsFormField,
+                    _radioValue1 < 0,
+                    TextInputType.number),
                 inputData(
                     "ex : Yogyakarta,sleman,maguwo",
                     "Alamat Npwp",
                     savealmatnpwp,
                     "Masukan Alamat NPWP",
                     _statutsFormField,
-                    _radioValue1 < 0),
+                    _radioValue1 < 0,
+                    TextInputType.text),
                 InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RdataPribadi()),
+                      MaterialPageRoute(
+                          builder: (context) => RdataPribadi(
+                                namaprhs: savenama.text,
+                                namanpwp: savenamanpwp.text,
+                                nonpwp: savenonpwp.text,
+                                alamatnpwp: savealmatnpwp.text,
+                              )),
                     );
                     /*if (_key.currentState.validate()) {
                       if (_radioValue1 < 0) {
@@ -209,8 +207,14 @@ Widget sncakbar() {
   });
 }
 
-Widget inputData(String hintText, String labelText,
-    TextEditingController onSave, String validater, bool en, bool nilai) {
+Widget inputData(
+    String hintText,
+    String labelText,
+    TextEditingController onSave,
+    String validater,
+    bool en,
+    bool nilai,
+    TextInputType inputtype) {
   return Builder(builder: (BuildContext mContext) {
     return Padding(
       padding: EdgeInsets.all(10.0),
@@ -222,6 +226,7 @@ Widget inputData(String hintText, String labelText,
           return null;
         },
         enabled: en,
+        keyboardType: inputtype,
         controller: onSave,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(15),

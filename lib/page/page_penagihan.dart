@@ -14,7 +14,11 @@ class Penagihan extends StatefulWidget {
       this.jnsid,
       this.alamatprb,
       this.jnsklmn,
-      this.tgllhr});
+      this.tgllhr,
+      this.namaprhs,
+      this.nonpwp,
+      this.namanpwp,
+      this.alamatnpwp});
 
   final String nama;
   final String brand;
@@ -27,6 +31,7 @@ class Penagihan extends StatefulWidget {
   final String alamatprb;
   final String jnsklmn;
   final String tgllhr;
+  final String namaprhs, nonpwp, namanpwp, alamatnpwp;
   @override
   _PenagihanState createState() => _PenagihanState();
 }
@@ -52,6 +57,10 @@ class _PenagihanState extends State<Penagihan> {
               alamat: widget.alamatprb,
               jnsklmn: widget.jnsklmn,
               tgllhr: widget.tgllhr,
+              namaprhs: widget.namaprhs,
+              namanpwp: widget.namanpwp,
+              nonpwp: widget.nonpwp,
+              alamatnpwp: widget.alamatnpwp,
             )
           ],
         ),

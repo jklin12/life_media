@@ -1,29 +1,31 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/page/first_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:life_media_demo/test.dart';
 
 class PPaket extends StatefulWidget {
-  PPaket({
-    this.nama,
-    this.brand,
-    this.pekerjaan,
-    this.email,
-    this.nohp,
-    this.noid,
-    this.notlp,
-    this.namapenerima,
-    this.alamatpenerima,
-    this.notlppenerima,
-    this.nohppenerima,
-    this.emailpenerima,
-    this.jnsid,
-    this.jnsklmn,
-    this.alamat,
-    this.tgllhr,
-  });
+  PPaket(
+      {this.nama,
+      this.brand,
+      this.pekerjaan,
+      this.email,
+      this.nohp,
+      this.noid,
+      this.notlp,
+      this.namapenerima,
+      this.alamatpenerima,
+      this.notlppenerima,
+      this.nohppenerima,
+      this.emailpenerima,
+      this.jnsid,
+      this.jnsklmn,
+      this.alamat,
+      this.tgllhr,
+      this.namaprhs,
+      this.nonpwp,
+      this.namanpwp,
+      this.alamatnpwp});
 
   final String nama;
   final String brand;
@@ -41,6 +43,7 @@ class PPaket extends StatefulWidget {
   final String nohppenerima;
   final String emailpenerima;
   final String tgllhr;
+  final String namaprhs, nonpwp, namanpwp, alamatnpwp;
 
   @override
   _PPaketState createState() => _PPaketState();
@@ -51,10 +54,10 @@ class _PPaketState extends State<PPaket> {
     final response = await http.post(
         "http://202.169.224.10/applifemedia/api_pendaftaran/index.php/Daftar",
         body: {
-          "nama_prsh": "sim",
-          "nama_npwp": "sims",
-          "no_npwp": "12345",
-          "alamat_npwp": "jljaksas",
+          "nama_prsh": widget.namaprhs,
+          "nama_npwp": widget.namanpwp,
+          "no_npwp": widget.nonpwp,
+          "alamat_npwp": widget.alamatnpwp,
           "nama_prb": widget.nama,
           "nama_brand": widget.brand,
           "jns_id": widget.jnsid,
@@ -463,10 +466,8 @@ _ackAlert(BuildContext context) {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FirstPage()),
-                    );
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/exit', (Route<dynamic> route) => false);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
