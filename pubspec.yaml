@@ -27,6 +27,9 @@ dependencies:
   flutter_datetime_picker:
   http:
   flutter_launch:
+  fl_chart:
+  flutter_isolate:
+  flutter_startup:
 
 dev_dependencies:
   flutter_test:

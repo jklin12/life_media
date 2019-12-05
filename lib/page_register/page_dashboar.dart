@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/page/page_about.dart';
-import 'package:life_media_demo/page/page_home.dart';
+import 'package:life_media_demo/page_dashboard/page_about.dart';
+import 'package:life_media_demo/page_dashboard/page_home.dart';
 
 class DashBoard extends StatefulWidget {
   @override

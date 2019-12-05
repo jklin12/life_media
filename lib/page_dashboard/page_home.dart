@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:life_media_demo/widget_page_dashboard/widget_home_page.dart';
 import 'package:life_media_demo/widgetdashboard/bgdashboard.dart';
 import 'package:life_media_demo/widgetdashboard/myappbar.dart';
 import 'package:life_media_demo/widgetdashboard/mydrawe.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -19,8 +21,18 @@ class _HomePageState extends State<HomePage> {
         resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: Stack(
-          children: <Widget>[BgDashboard(),
-          new Container(height: 50.0,)],
+          children: <Widget>[
+            BgDashboard(),
+            new Container(
+              height: MediaQuery.of(context).size.height / 1.5,
+              
+              child: Column(
+                children: <Widget>[
+                  WidgetHomeDashboard()
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

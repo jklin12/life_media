@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:life_media_demo/page_register/first_page.dart';
 import 'package:life_media_demo/page_register/page_dashboar.dart';
 
-
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,11 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      routes: {
-        '/exit': (BuildContext context) => FirstPage()
-      },
+      routes: {'/exit': (BuildContext context) => FirstPage()},
       home: DashBoard(),
     );
   }
 }
-

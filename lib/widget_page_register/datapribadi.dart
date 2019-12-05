@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/page/page_penagihan.dart';
+import 'package:life_media_demo/page_register/page_penagihan.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class DataPribadi extends StatefulWidget {

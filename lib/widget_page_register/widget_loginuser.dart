@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:life_media_demo/page/page_dashboar.dart';
+import 'package:life_media_demo/page_register/page_dashboar.dart';
 import 'dart:convert';
 
 enum LoginStatus { notSignIn, signIn }
