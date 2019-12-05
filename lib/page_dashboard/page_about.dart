@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bgdashboard.dart';
-import 'package:life_media_demo/widget/myappbar.dart';
-import 'package:life_media_demo/widget/mydrawe.dart';
+import 'package:life_media_demo/widgetdashboard/bgdashboard.dart';
+import 'package:life_media_demo/widgetdashboard/myappbar.dart';
+import 'package:life_media_demo/widgetdashboard/mydrawe.dart';
 
 class AboutPage extends StatefulWidget {
   @override

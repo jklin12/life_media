@@ -26,8 +26,6 @@ dependencies:
   geolocator:
   flutter_datetime_picker:
   http:
-  json_to_form:
-  shared_preferences:
   flutter_launch:
 
 dev_dependencies:

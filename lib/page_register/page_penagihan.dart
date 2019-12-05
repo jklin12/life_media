@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg2.dart';
-import 'package:life_media_demo/widget/p_paket.dart';
+import 'package:life_media_demo/widget_page_register/Widget_penagihan.dart';
+import 'package:life_media_demo/widget_page_register/bg2.dart';
 
-class PilihPaket extends StatefulWidget {
-  PilihPaket(
+class Penagihan extends StatefulWidget {
+  Penagihan(
       {this.nama,
       this.brand,
       this.pekerjaan,
@@ -11,13 +11,8 @@ class PilihPaket extends StatefulWidget {
       this.nohp,
       this.noid,
       this.notlp,
-      this.namapenerima,
-      this.alamatpenerima,
-      this.notlppenerima,
-      this.nohppenerima,
-      this.emailpenerima,
       this.jnsid,
-      this.alamat,
+      this.alamatprb,
       this.jnsklmn,
       this.tgllhr,
       this.namaprhs,
@@ -33,21 +28,15 @@ class PilihPaket extends StatefulWidget {
   final String notlp;
   final String noid;
   final String jnsid;
-  final String alamat;
+  final String alamatprb;
   final String jnsklmn;
-  final String namapenerima;
-  final String alamatpenerima;
-  final String notlppenerima;
-  final String nohppenerima;
-  final String emailpenerima;
   final String tgllhr;
   final String namaprhs, nonpwp, namanpwp, alamatnpwp;
-
   @override
-  _PilihPaketState createState() => _PilihPaketState();
+  _PenagihanState createState() => _PenagihanState();
 }
 
-class _PilihPaketState extends State<PilihPaket> {
+class _PenagihanState extends State<Penagihan> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -56,22 +45,17 @@ class _PilihPaketState extends State<PilihPaket> {
         body: Stack(
           children: <Widget>[
             Background2(),
-            PPaket(
+            Widgetpenagihan(
               nama: widget.nama,
               brand: widget.brand,
               pekerjaan: widget.pekerjaan,
-              email: widget.email,
-              nohp: widget.nohp,
-              noid: widget.noid,
               notlp: widget.notlp,
+              noid: widget.noid,
+              nohp: widget.nohp,
+              email: widget.email,
               jnsid: widget.jnsid,
+              alamat: widget.alamatprb,
               jnsklmn: widget.jnsklmn,
-              alamat: widget.alamat,
-              namapenerima: widget.namapenerima,
-              alamatpenerima: widget.alamatpenerima,
-              nohppenerima: widget.nohppenerima,
-              notlppenerima: widget.notlppenerima,
-              emailpenerima: widget.emailpenerima,
               tgllhr: widget.tgllhr,
               namaprhs: widget.namaprhs,
               namanpwp: widget.namanpwp,

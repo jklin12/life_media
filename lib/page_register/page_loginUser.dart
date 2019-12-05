@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg2.dart';
-import 'package:life_media_demo/widget/widget_loginuser.dart';
+import 'package:life_media_demo/widget_page_register/bg2.dart';
+import 'package:life_media_demo/widget_page_register/widget_loginuser.dart';
 
 class UserLogin extends StatefulWidget {
   @override

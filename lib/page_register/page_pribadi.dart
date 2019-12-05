@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg2.dart';
-import 'package:life_media_demo/widget/datapribadi.dart';
+import 'package:life_media_demo/widget_page_register/bg2.dart';
+import 'package:life_media_demo/widget_page_register/datapribadi.dart';
 
 class RdataPribadi extends StatefulWidget {
   RdataPribadi({this.namaprhs, this.nonpwp, this.namanpwp, this.alamatnpwp});

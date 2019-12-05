@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:life_media_demo/page/page_loginUser.dart';
+import 'package:life_media_demo/page_register/page_loginUser.dart';
 import 'dart:convert';
 import 'package:flutter_launch/flutter_launch.dart';
-
-import 'package:life_media_demo/page/page_select.dart';
-import 'package:life_media_demo/test.dart';
+import 'package:life_media_demo/page_register/page_select.dart';
+import 'package:life_media_demo/widgetdashboard/test.dart';
 
 class Login extends StatefulWidget {
   @override

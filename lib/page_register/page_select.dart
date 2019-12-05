@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg.dart';
-import 'package:life_media_demo/widget/widget_select.dart';
+import 'package:life_media_demo/widget_page_register/bg.dart';
+import 'package:life_media_demo/widget_page_register/widget_select.dart';
 
 class PageSelect extends StatefulWidget {
   @override

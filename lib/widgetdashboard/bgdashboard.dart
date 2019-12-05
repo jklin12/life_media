@@ -17,7 +17,15 @@ class BgDashboard extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: Container(color: Colors.red,),
+            child: Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                  Color(0xFFFF9945),
+                  Color(0xFFFc6076),
+                ]))),
           ),
           Stack(
             alignment: Alignment.bottomLeft,

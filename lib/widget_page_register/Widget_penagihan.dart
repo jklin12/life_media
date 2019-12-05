@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/page/page_paket.dart';
+import 'package:life_media_demo/page_register/page_paket.dart';
 
 class Widgetpenagihan extends StatefulWidget {
   Widgetpenagihan(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg.dart';
-import 'package:life_media_demo/widget/login.dart';
+import 'package:life_media_demo/widget_page_register/bg.dart';
+import 'package:life_media_demo/widget_page_register/login.dart';
 
 class FirstPage extends StatefulWidget {
   @override

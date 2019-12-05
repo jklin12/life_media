@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/page/first_page.dart';
+import 'package:life_media_demo/page_register/first_page.dart';
+import 'package:life_media_demo/page_register/page_dashboar.dart';
 
 
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/exit': (BuildContext context) => FirstPage()
       },
-      home: FirstPage(),
+      home: DashBoard(),
     );
   }
 }

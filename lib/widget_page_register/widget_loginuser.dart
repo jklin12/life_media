@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:life_media_demo/page/page_dashboar.dart';
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 enum LoginStatus { notSignIn, signIn }
 
@@ -33,7 +32,7 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
     }
   }
 
-  login() async {
+  /* login() async {
     final response = await http.post("http://192.168.10.193/flutter/login.php",
         body: {"email": email, "password": password});
     final data = jsonDecode(response.body);
@@ -51,7 +50,7 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
     } else {
       print(pesan);
     }
-  }
+  }*/
 
   testlogin() {
     if (email == "abc") {
@@ -62,7 +61,7 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
     }
   }
 
-  savePref(int value, String email, String nama, String id) async {
+  /*savePref(int value, String email, String nama, String id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", value);
@@ -70,32 +69,32 @@ class _WidgetUserLoginState extends State<WidgetUserLogin> {
       preferences.setString("email", email);
       preferences.setString("id", id);
     });
-  }
+  }*/
 
   var value;
-  getPref() async {
+  /*getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       value = preferences.getInt("value");
 
       _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
     });
-  }
+  }*/
 
-  signOut() async {
+  /*signOut() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", null);
 
       _loginStatus = LoginStatus.notSignIn;
     });
-  }
+  }*/
 
-  @override
+  /*@override
   void initState() {
     super.initState();
     getPref();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

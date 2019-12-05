@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_media_demo/widget/bg2.dart';
-import 'package:life_media_demo/widget/registerdataperusahaan.dart';
+import 'package:life_media_demo/widget_page_register/bg2.dart';
+import 'package:life_media_demo/widget_page_register/registerdataperusahaan.dart';
 
 class RegisterPage2 extends StatefulWidget {
   @override
